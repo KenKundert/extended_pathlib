@@ -1,0 +1,16 @@
+language: python
+python:
+  - "3.4"
+  - "3.5"
+  - "nightly"
+install:
+  - pip install .
+script: 
+  - cd tests; py.test
+deploy:
+    provider: pypi
+    user: extended_pathlib
+    on:
+        tags: true
+
+
