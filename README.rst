@@ -9,8 +9,8 @@ would from pathlib, and use the new functionality::
 
     >>> from extended_pathlib import Path
 
-    >>> home = Path('~').expanduser()
-    >>> home.is_readable()
+    >>> tmp = Path('/tmp')
+    >>> tmp.is_readable()
     True
 
 Installation
