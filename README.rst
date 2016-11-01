@@ -75,7 +75,7 @@ a path that starts with '..'.
 
 
 sans_ext
-~~~~~~~~~
+~~~~~~~~
 
 Removes the file extension.
 This differs from Path.stem, which returns the final path component
@@ -84,3 +84,36 @@ of its extension.
 
     >>> Path('a/b.c').sans_ext()
     PosixPath('a/b')
+
+
+write_bytes
+~~~~~~~~~~~
+
+Writes a binary file.
+This is the standard pathlib write_bytes() that was introduced in Python3.5, but 
+back-ported to earlier versions.
+
+
+write_text
+~~~~~~~~~~
+
+Reads a binary file.
+This is the standard pathlib write_text() that was introduced in Python3.5, but 
+back-ported to earlier versions.
+
+
+read_bytes
+~~~~~~~~~~
+
+Reads a binary file.
+This is the standard pathlib read_bytes() that was introduced in Python3.5, but 
+back-ported to earlier versions.
+
+
+read_text
+~~~~~~~~~
+
+Reads a text file.
+This is the standard pathlib read_text() that was introduced in Python3.5, but 
+back-ported to earlier versions.
+
