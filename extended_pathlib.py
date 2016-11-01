@@ -20,7 +20,9 @@ __version__ = '0.0.0'
 
 # Imports {{{1
 from pathlib import Path, PosixPath
+import six
 import os
+import sys
 
 
 # is_readable {{{1
@@ -106,3 +108,59 @@ def _sans_ext(path):
     return path.parent / path.stem
 
 PosixPath.sans_ext = _sans_ext
+
+# Python 3.5 extensions {{{1
+if sys.version_info.major < 3 or sys.version_info.minor < 5:
+
+    # read_bytes {{{2
+    def _read_bytes(path):
+        """
+        Open the file in binary mode, read it, and close the file.
+        """
+        with path.open(mode='rb') as f:
+            return f.read()
+
+    PosixPath.read_bytes = _read_bytes
+
+    # read_text {{{2
+    def _read_text(path, encoding=None, errors=None):
+        """
+        Open the file in text mode, read it, and close the file.
+        """
+        with path.open(mode='r', encoding=encoding, errors=errors) as f:
+            return f.read()
+
+    PosixPath.read_text = _read_text
+
+    # write_bytes {{{2
+    def _write_bytes(path, data):
+        """
+        Open the file in binary mode, write it, and close the file.
+        """
+        if not isinstance(data, six.binary_type):
+            raise TypeError(
+                'data must be %s, not %s.' % (
+                    six.binary_type.__name__, data.__class__.__name__
+                )
+            )
+        with path.open(mode='wb') as f:
+            return f.write(data)
+
+    PosixPath.write_bytes = _write_bytes
+
+    # write_text {{{2
+    def _write_text(path, data, encoding=None, errors=None):
+        """
+        Open the file in text mode, write it, and close the file.
+        """
+        if not isinstance(data, six.text_type):
+            raise TypeError(
+                'data must be %s, not %s.' % (
+                    six.text_type.__name__, data.__class__.__name__
+                )
+            )
+        with path.open(mode='w', encoding=encoding, errors=errors) as f:
+            return f.write(data)
+
+    PosixPath.write_text = _write_text
+

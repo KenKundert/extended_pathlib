@@ -18,7 +18,7 @@ setup(
     download_url='https://github.com/kenkundert/extended_pathlib/tarball/master',
     license='GPLv3+',
     zip_safe=True,
-    install_requires=[],
+    install_requires=['six'],
     keywords=[
         'extended',
         'pathlib',
@@ -29,6 +29,7 @@ setup(
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: English',
         'Operating System :: POSIX :: Linux',
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Topic :: Utilities',
