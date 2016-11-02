@@ -150,13 +150,13 @@ if sys.version_info.major < 3 or sys.version_info.minor < 5:
     PosixPath.write_bytes = _write_bytes
 
     # write_text {{{2
-    def _write_text(self, data, encoding=None, errors=None):
+    def _write_text(self, text, encoding=None, errors=None):
         """
         Open the file in text mode, write it, and close the file.
         """
         path = str(self)
         with codecs.open(path, mode='w', encoding=encoding, errors=errors) as f:
-            return f.write(data)
+            return f.write(text)
 
     PosixPath.write_text = _write_text
 
