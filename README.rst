@@ -13,10 +13,12 @@ would from pathlib, and use the new functionality::
     >>> tmp.is_readable()
     True
 
+
 Installation
 ------------
 
-Use 'pip3 install extended_pathlib' to install. Requires Python3.4 or better.
+Use 'pip3 install extended_pathlib' to install. Requires Python2.7 or Python3.3 
+or better.
 
 .. image:: https://travis-ci.org/KenKundert/extended_pathlib.svg?branch=master
     :target: https://travis-ci.org/KenKundert/extended_pathlib
