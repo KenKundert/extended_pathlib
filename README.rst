@@ -119,3 +119,8 @@ Reads a text file.
 This is the standard pathlib read_text() that was introduced in Python3.5, but 
 back-ported to earlier versions.
 
+
+expanduser
+~~~~~~~~~~
+
+Expand leading tilde (~) in paths.

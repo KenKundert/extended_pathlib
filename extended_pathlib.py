@@ -20,6 +20,7 @@ __version__ = '0.2.1'
 
 # Imports {{{1
 from pathlib import Path, PosixPath
+import codecs
 import six
 import os
 import sys
@@ -113,27 +114,27 @@ PosixPath.sans_ext = _sans_ext
 if sys.version_info.major < 3 or sys.version_info.minor < 5:
 
     # read_bytes {{{2
-    def _read_bytes(path):
+    def _read_bytes(self):
         """
         Open the file in binary mode, read it, and close the file.
         """
-        with path.open(mode='rb') as f:
+        with self.open(mode='rb') as f:
             return f.read()
 
     PosixPath.read_bytes = _read_bytes
 
     # read_text {{{2
-    def _read_text(path, encoding=None, errors=None):
+    def _read_text(self, encoding=None, errors=None):
         """
         Open the file in text mode, read it, and close the file.
         """
-        with path.open(mode='r', encoding=encoding, errors=errors) as f:
+        with self.open(mode='r', encoding=encoding, errors=errors) as f:
             return f.read()
 
     PosixPath.read_text = _read_text
 
     # write_bytes {{{2
-    def _write_bytes(path, data):
+    def _write_bytes(self, data):
         """
         Open the file in binary mode, write it, and close the file.
         """
@@ -143,24 +144,33 @@ if sys.version_info.major < 3 or sys.version_info.minor < 5:
                     six.binary_type.__name__, data.__class__.__name__
                 )
             )
-        with path.open(mode='wb') as f:
+        with self.open(mode='wb') as f:
             return f.write(data)
 
     PosixPath.write_bytes = _write_bytes
 
     # write_text {{{2
-    def _write_text(path, data, encoding=None, errors=None):
+    def _write_text(self, data, encoding=None, errors=None):
         """
         Open the file in text mode, write it, and close the file.
         """
-        if not isinstance(data, six.text_type):
-            raise TypeError(
-                'data must be %s, not %s.' % (
-                    six.text_type.__name__, data.__class__.__name__
-                )
-            )
-        with path.open(mode='w', encoding=encoding, errors=errors) as f:
+        path = str(self)
+        with codecs.open(path, mode='w', encoding=encoding, errors=errors) as f:
             return f.write(data)
 
     PosixPath.write_text = _write_text
+
+    # expand_user {{{2
+    def _expanduser(self):
+        """
+        Return a new path with expanded ~ and ~user constructs.
+        """
+
+        path = str(self)
+        if path[:1] == '~':
+            path = os.path.expanduser(path)
+            self = Path(path)
+        return self
+
+    PosixPath.expanduser = _expanduser
 
