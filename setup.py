@@ -8,7 +8,7 @@ with open('README.rst') as f:
 
 setup(
     name='extended_pathlib',
-    version='0.2.1',
+    version='0.3.0',
     description='shell library',
     long_description=readme,
     author="Ken Kundert",
