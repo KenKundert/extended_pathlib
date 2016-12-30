@@ -15,7 +15,7 @@ else:
 
 setup(
     name='extended_pathlib',
-    version='0.3.1',
+    version='0.4.0',
     description='shell library',
     long_description=readme,
     author="Ken Kundert",
