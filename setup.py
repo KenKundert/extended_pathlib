@@ -8,7 +8,7 @@ with open('README.rst') as f:
 
 from sys import version_info
 
-if version_info < '3.4':
+if version_info < (3, 4):
     requirements=['pathlib', 'six']
 else:
     requirements=['six']
