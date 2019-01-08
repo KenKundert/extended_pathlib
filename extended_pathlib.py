@@ -1,7 +1,7 @@
 # pathlib -- extends system pathlib
 
 # License {{{1
-# Copyright (C) 2016 Kenneth S. Kundert
+# Copyright (C) 2016-2019 Kenneth S. Kundert
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -111,7 +111,7 @@ def _sans_ext(path):
 PosixPath.sans_ext = _sans_ext
 
 # Python 3.5 extensions {{{1
-if sys.version_info.major < 3 or sys.version_info.minor < 5:
+if sys.version_info < (3, 5):
 
     # read_bytes {{{2
     def _read_bytes(self):
