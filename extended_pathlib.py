@@ -1,7 +1,7 @@
 # pathlib -- extends system pathlib
 
 # License {{{1
-# Copyright (C) 2016-2019 Kenneth S. Kundert
+# Copyright (C) 2016-2020 Kenneth S. Kundert
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -81,6 +81,28 @@ def _is_hidden(path):
     return path.exists() and path.name.startswith('.')
 
 PosixPath.is_hidden = _is_hidden
+
+
+# is_newer {{{1
+def _is_newer(path, ref):
+    """
+    Tests whether path is newer than ref where ref is either another path or a
+    date.
+
+    >>> Path('/usr/bin/python').is_newer(0)
+    True
+
+    """
+    mtime = path.stat().st_mtime
+    try:
+        return mtime > ref
+    except TypeError:
+        try:
+            return mtime > ref.timestamp
+        except AttributeError:
+            return mtime > ref.stat().st_mtime
+
+PosixPath.is_newer = _is_newer
 
 
 # path_from {{{1

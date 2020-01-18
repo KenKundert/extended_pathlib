@@ -64,6 +64,16 @@ hidden (starts with '.').
    False
 
 
+is_newer
+~~~~~~~~
+
+Returns True if the given path is newer than the reference.  The reference may 
+be a timestamp, a datetime object, or another path.
+
+   >>> Path('/usr/bin/python').is_newer(0)
+   True
+
+
 path_from
 ~~~~~~~~~
 
