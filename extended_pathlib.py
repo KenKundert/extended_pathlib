@@ -25,7 +25,7 @@ from pathlib import Path, PosixPath
 import six
 
 # Globals {{{1
-__version__ = "0.4.0"
+__version__ = "0.4.1"
 
 
 # is_readable {{{1
