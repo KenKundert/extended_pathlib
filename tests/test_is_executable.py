@@ -1,10 +1,10 @@
 from extended_pathlib import Path
-import pytest
+
 
 def test_is_executable_downturn():
     # setup
-    f1 = Path('f1')
-    d1 = Path('d1')
+    f1 = Path("f1")
+    d1 = Path("d1")
     f1.touch()
     d1.mkdir()
 
