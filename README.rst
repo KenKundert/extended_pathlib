@@ -17,7 +17,7 @@ would from pathlib, and use the new functionality::
 Installation
 ------------
 
-Use 'pip3 install extended_pathlib' to install. Requires Python2.7 or Python3.3 
+Use 'pip3 install extended_pathlib' to install. Requires Python2.7 or Python3.4 
 or better.
 
 .. image:: https://travis-ci.org/KenKundert/extended_pathlib.svg?branch=master
