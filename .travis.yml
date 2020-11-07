@@ -1,20 +1,20 @@
 language: python
-python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "3.7"
-  - "3.8"
-  - "nightly"
 install:
   - pip install .
-script: 
-  - cd tests; py.test
-deploy:
-    provider: pypi
-    user: extended_pathlib
-    on:
-        tags: true
-
-
+  - pip install --upgrade coveralls pytest pytest-cov
+script:
+  - coverage run setup.py pytest
+jobs:
+  include:
+    - python: 3.6
+    - python: 3.7
+    - python: 3.8
+    - python: 3.9
+    - python: 3.10-dev
+    - python: nightly
+  allow_failures:
+    - python: 3.10-dev
+    - python: nightly
+  fast_finish: true
+after_success:
+  - coveralls
