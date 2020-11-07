@@ -25,6 +25,8 @@ setup(
     license = "GPLv3+",
     zip_safe = False,
     install_requires = requirements,
+    setup_requires='pytest-runner>=2.0'.split(),
+    tests_require='pytest'.split(),
     keywords = ["extended", "pathlib"],
     classifiers = [
         "Development Status :: 4 - Beta",
