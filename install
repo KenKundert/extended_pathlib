@@ -8,7 +8,7 @@
 # Requires Python 2.7 or Python3.4 or better.
 
 cmd=extended_pathlib
-pythons=(python2.7 python3)
+pythons=(python3)
     # Add the versions of python you would like to install to above
 
 for python in ${pythons[*]}; do
