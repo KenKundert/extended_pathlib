@@ -17,6 +17,7 @@ setup(
     version = "0.5.0",
     description = "shell library",
     long_description = readme,
+    long_description_content_type = 'text/x-rst',
     author = "Ken Kundert",
     author_email = "extended_pathlib@nurdletech.com",
     py_modules = ["extended_pathlib"],
