@@ -24,7 +24,7 @@ setup(
     url = "http://nurdletech.com/linux-utilities/extended_pathlib",
     download_url = "https://github.com/kenkundert/extended_pathlib/tarball/master",
     license = "GPLv3+",
-    zip_safe = False,
+    zip_safe = True,
     install_requires = requirements,
     setup_requires='pytest-runner>=2.0'.split(),
     tests_require='pytest'.split(),
